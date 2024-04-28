@@ -11,7 +11,7 @@ const upload = multer({ dest: "uploads/" }); // Destination folder for storing u
 // Apply for a job with resume upload
 router.post("/apply/:id", upload.single("resume"), async (req, res) => {
   const { id } = req.params;
-  const { name, email } = req.body;
+  const { name, email, userId } = req.body; // Retrieve user ID from request body
 
   try {
     // Check if the resume file is missing
@@ -30,6 +30,7 @@ router.post("/apply/:id", upload.single("resume"), async (req, res) => {
       jobTitle: job.title,
       name,
       email,
+      userId, // Store user ID along with job application data
       resume: req.file.path,
     });
 

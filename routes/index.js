@@ -12,6 +12,8 @@ import { deleteJob } from "./jobs/deleteJob.js";
 import { updateJob } from "./jobs/updateJob.js";
 import { showJob } from "./jobs/showJob.js";
 import { ApplyJob } from "./jobs/ApplyJobs.js";
+import { RetrieveAppliedJobs } from "./jobs/RetrieveAppliedJobs.js";
+import { RetrieveuserJobs } from "./jobs/RetrieveuserJobs.js";
 import auth from "../middlewares/auth.js";
 import { ConfirmPassword } from "./loginSignup/ConfirmPassword.js";
 import { sendPassword } from "./loginSignup/sendPasswrord.js";
@@ -38,9 +40,11 @@ router.put("/jobs/:id", auth, updateJob);
 router.get("/jobs", showJob);
 router.get("/jobs/:id", showJob);
 router.post("/apply/:id", ApplyJob);
-router.post("/confirmOtp", ConfirmPassword);
+router.get("/applied-users", RetrieveAppliedJobs);
+router.get("/user-apply", RetrieveuserJobs )
 
 // Route for updating user password
+router.post("/confirmOtp", ConfirmPassword);
 router.post("/resetPassword", updatePassword);
 router.post("/sendOtp", sendPassword);
 
